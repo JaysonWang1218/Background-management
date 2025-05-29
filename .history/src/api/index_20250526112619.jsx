@@ -1,0 +1,13 @@
+import http from "./axios.jsx";
+export const getData = () => {
+  return http.request({
+    url: "/home/getData",
+    method: "get",
+  });
+};
+export const getUser = () => {
+  return http.request({
+    url: "/user/get",
+    method: "get",
+  });
+};

@@ -1,0 +1,7 @@
+.user .flex-box {
+  display: flex;
+  width: 100%;
+}
+.user .flex-box {
+  justify-content: space-between;
+}
