@@ -29,7 +29,7 @@ const CommonHeader = ({ collapsed }) => {
     {
       key: "2",
       label: (
-        <a onClick={() => logout()} target="_blank" rel="noopener noreferrer">
+        <a onClick={() => logout} target="_blank" rel="noopener noreferrer">
           退出
         </a>
       ),

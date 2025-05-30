@@ -5,7 +5,6 @@ import Mall from "../pages/mall/index.jsx";
 import User from "../pages/user/index.jsx";
 import PageOne from "../pages/other/pageOne.jsx";
 import PageTwo from "../pages/other/pageTwo.jsx";
-import Login from "../pages/login/index.jsx";
 const routes = [
   {
     path: "/",
@@ -45,7 +44,7 @@ const routes = [
   },
   {
     path: "/login",
-    Component: Login,
-  },
+    Component: Login
+  }
 ];
 export const router = createBrowserRouter(routes);
