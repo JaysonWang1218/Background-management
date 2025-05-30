@@ -22,17 +22,18 @@ const tabSlice = createSlice({
       }
     },
     closeTab: (state, { payload: val }) => {
-      let res = state.tabList.findIndex((item) => item.name === val.name);
-      state.tabList.splice(res, 1);
-    },
-    setCurrentMenu: (state, { payload: val }) => {
-      if (val.name === "home") {
-        state.currentMenu = {};
-      } else {
-        state.currentMenu = val;
+      // 防止关闭最后一个标签
+      if(state.tabList.length <= 1) return;
+      
+      const index = state.tabList.findIndex((item) => item.name === val.name);
+      state.tabList.splice(index, 1);
+      
+      // 如果关闭的是当前选中标签，自动选中前一个标签
+      if(val.name === state.currentMenu.name) {
+        state.currentMenu = state.tabList[Math.max(0, index - 1)] || {};
       }
     },
   },
 });
-export const { collapseMenu, selectMenuList, closeTab, setCurrentMenu } = tabSlice.actions;
+export const { collapseMenu, selectMenuList, closeTab } = tabSlice.actions;
 export default tabSlice.reducer;

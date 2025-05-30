@@ -22,6 +22,7 @@ const CommonTag = () => {
         navigate(prevTab.path);
       }
     }
+    //如果关闭的不是当前标签，导航到当前标签
   };
 
   const handleChange = (tag) => {

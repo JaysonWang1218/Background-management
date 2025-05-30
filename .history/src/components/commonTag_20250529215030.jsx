@@ -2,15 +2,14 @@ import React from "react";
 import { Tag, Space } from "antd";
 import "../css/commonTag.css";
 import { useSelector, useDispatch } from "react-redux";
-import { closeTab, selectMenuList, setCurrentMenu } from "../store/reducers/tab.jsx";
-import { useNavigate, useLocation } from "react-router-dom";
+import { closeTab, selectMenuList } from "../store/reducers/tab.jsx";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const CommonTag = () => {
   const tabList = useSelector((state) => state.tab.tabList);
   const currentMenu = useSelector((state) => state.tab.currentMenu);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const action = useLocation();
 
   const handleClose = (tag) => {
     dispatch(closeTab(tag));
@@ -25,17 +24,19 @@ const CommonTag = () => {
   };
 
   const handleChange = (tag) => {
-    dispatch(setCurrentMenu(tag));
     navigate(tag.path);
   };
 
   const setTag = (flag, item, index) => {
-    return flag ? (
-      <Tag key={item.name} closable color="#55acee" onClose={() => handleClose(item)}>
-        {item.label}
-      </Tag>
-    ) : (
-      <Tag key={item.name} onClick={() => handleChange(item)}>
+    const isActive = item.path === currentMenu.path;
+    return (
+      <Tag
+        key={item.name}
+        closable={flag}
+        color={isActive ? "#55acee" : undefined}
+        onClose={flag ? () => handleClose(item) : undefined}
+        onClick={() => handleChange(item)}
+      >
         {item.label}
       </Tag>
     );

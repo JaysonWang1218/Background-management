@@ -17,22 +17,15 @@ const tabSlice = createSlice({
         if (!isExist) {
           state.tabList.push(val);
         }
-      } else if (val.name === "home" && state.tabList.length === 1) {
+      } else {
         state.currentMenu = {};
       }
     },
     closeTab: (state, { payload: val }) => {
-      let res = state.tabList.findIndex((item) => item.name === val.name);
-      state.tabList.splice(res, 1);
-    },
-    setCurrentMenu: (state, { payload: val }) => {
-      if (val.name === "home") {
-        state.currentMenu = {};
-      } else {
-        state.currentMenu = val;
-      }
+      const index = state.tabList.findIndex((item) => item.name === val.name);
+      state.tabList.splice(index, 1);
     },
   },
 });
-export const { collapseMenu, selectMenuList, closeTab, setCurrentMenu } = tabSlice.actions;
+export const { collapseMenu, selectMenuList, closeTab } = tabSlice.actions;
 export default tabSlice.reducer;

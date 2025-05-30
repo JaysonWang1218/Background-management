@@ -2,8 +2,8 @@ import React from "react";
 import { Tag, Space } from "antd";
 import "../css/commonTag.css";
 import { useSelector, useDispatch } from "react-redux";
-import { closeTab, selectMenuList, setCurrentMenu } from "../store/reducers/tab.jsx";
-import { useNavigate, useLocation } from "react-router-dom";
+import { closeTab, selectMenuList } from "../store/reducers/tab.jsx";
+import { useNavigate,useLocation } from "react-router-dom";
 
 const CommonTag = () => {
   const tabList = useSelector((state) => state.tab.tabList);
@@ -25,7 +25,6 @@ const CommonTag = () => {
   };
 
   const handleChange = (tag) => {
-    dispatch(setCurrentMenu(tag));
     navigate(tag.path);
   };
 

@@ -22,8 +22,8 @@ const tabSlice = createSlice({
       }
     },
     closeTab: (state, { payload: val }) => {
-      let res = state.tabList.findIndex((item) => item.name === val.name);
-      state.tabList.splice(res, 1);
+      let res = state.tabsList.findIndex((item) => item.name === val.name);
+      state.tabsList.splice(res, 1);
     },
     setCurrentMenu: (state, { payload: val }) => {
       if (val.name === "home") {

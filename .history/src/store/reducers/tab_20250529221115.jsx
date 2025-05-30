@@ -26,11 +26,7 @@ const tabSlice = createSlice({
       state.tabList.splice(res, 1);
     },
     setCurrentMenu: (state, { payload: val }) => {
-      if (val.name === "home") {
-        state.currentMenu = {};
-      } else {
-        state.currentMenu = val;
-      }
+      state.currentMenu = val;
     },
   },
 });

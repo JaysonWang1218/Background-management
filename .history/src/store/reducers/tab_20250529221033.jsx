@@ -13,11 +13,12 @@ const tabSlice = createSlice({
     selectMenuList: (state, { payload: val }) => {
       if (val.name !== "home") {
         state.currentMenu = val;
-        const isExist = state.tabList.some((item) => item.name === val.name);
-        if (!isExist) {
+        const result = state.tabsList.findIndex((item) => item.name === val.name);
+        if (result === -1) {
           state.tabList.push(val);
+          console.log(state.tabList, "selectMenuList");
         }
-      } else if (val.name === "home" && state.tabList.length === 1) {
+      } else {
         state.currentMenu = {};
       }
     },
